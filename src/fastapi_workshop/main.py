@@ -16,7 +16,7 @@ This is the list of functions that we will be showing off.
 It uses markdown to render the text so anything you can do in markdown you can do here.
 
 ## Treasure
-* **Lay Treasure** - (_not implemented_)
+* **Lay Treasure** - Changes location of treasure
 * **search for treasure** - gives how far away from treasure
 
 ## Cards
@@ -83,6 +83,9 @@ times_found: int = 0
 
 @app.post("/lay_treasure", response_model_exclude_none=True, tags=["Treasure"])
 def lay_treasure(x: int, y: int):
+    """
+    Allows for the laying of treasure
+    """
     global SECRET_LOCATION
     SECRET_LOCATION=(x,y)
 
