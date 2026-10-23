@@ -9,6 +9,8 @@ from starlette.responses import FileResponse
 
 from fastapi_workshop.card_data_helper import Card, cards, cards_dict
 
+import random
+
 description = """
 This is the list of functions that we will be showing off.
 It uses markdown to render the text so anything you can do in markdown you can do here.
@@ -98,6 +100,17 @@ def search_for_treasure(x: int, y: int) -> TreasureResult:
     else:
         return TreasureResult(distance_away=distance(given_location, SECRET_LOCATION))
 
+
+@app.get("/random-deck", tags=["Cards"])
+def get_random_deck() -> list[str]:
+    """
+    Gets card names.
+    """
+    cardSubset=random.sample(cards,k=60)
+    cardNames=[]
+    for card in cardSubset:
+        cardNames.append(card.name)
+    return cardNames
 
 @app.get("/all-cards", tags=["Cards"])
 def get_all_cards() -> list[Card]:
