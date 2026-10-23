@@ -132,6 +132,15 @@ class UploadFileResponse(BaseModel):
     type: str | None
     filename: str
 
+@app.post("/process_file", tags=["File"])
+def process_file(file: UploadFile) -> str:
+    """This is a stupid idea"""
+    size=file.size
+    if(size==4):
+        return "Wow! It's 4!"
+    else:
+        return "Not 4. That's good probably"
+    
 
 @app.put("/file", tags=["File"])
 def upload_file(file: UploadFile, name: str | None = None) -> UploadFileResponse:
