@@ -22,12 +22,13 @@ It uses markdown to render the text so anything you can do in markdown you can d
 ## Cards
 * **all cards** - gets all the cards.
 * **cards**  - gets a specified card
-* **random card** - (_not implemented_)
+* **random deck** - Returns list of 60 random card names
 
 ## File
 * **upload file**  - Lets you upload a file
 * **download file** - Lets you download a file
 * **delete file** - Lets you delete a file
+* **process file** - checks for 4
 
 
 """
@@ -107,7 +108,7 @@ def search_for_treasure(x: int, y: int) -> TreasureResult:
 @app.get("/random-deck", tags=["Cards"])
 def get_random_deck() -> list[str]:
     """
-    Gets card names.
+    Gets 60 random card names.
     """
     cardSubset=random.sample(cards,k=60)
     cardNames=[]
